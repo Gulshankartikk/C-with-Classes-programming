@@ -11,7 +11,7 @@
       "cwd": "c:/Users/kg872/OneDrive/Desktop/C++ DSA",
       "program": "c:/Users/kg872/OneDrive/Desktop/C++ DSA/build/Debug/outDebug",
       "MIMode": "gdb",
-      "miDebuggerPath": "gdb",
+      "miDebuggerPath": "C:/mingw64/bin/gdb.exe",
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",
