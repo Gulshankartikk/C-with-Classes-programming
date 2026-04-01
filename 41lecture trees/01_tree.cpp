@@ -18,16 +18,20 @@ class Node
 Node* BinaryTree()
 {
     int x;
-    cout<<"enter the value:";
+    cout<<"Enter value (-1 for NULL): ";
     cin>>x;
-    if(x==-1)
-    return NULL;
 
-    Node *root =new Node(x);
-    cout<<"enter the left child of "<<"\n";
-    root->left =BinaryTree();
-    cout<<"enter the right child of "<<"\n";
-    root->right =BinaryTree();
+    if(x == -1)
+        return NULL;
+
+    Node *root = new Node(x);
+
+    cout<<"Enter left child of "<<x<<":\n";
+    root->left = BinaryTree();
+
+    cout<<"Enter right child of "<<x<<":\n";
+    root->right = BinaryTree();
+
     return root;
 }
 int main()
