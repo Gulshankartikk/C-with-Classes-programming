@@ -30,12 +30,24 @@ Node * BST(Node *root, int value)
     }
     
 }
+void inorder(Node *root)
+{
+    if(root)
+    {
+        inorder(root->left);
+        cout<<root->data<<" ";
+        inorder(root->right);
+    }
+}
 
 int main()
 {
     int arr[10]={10,13,4,8,11,19,2,7,18,23};
     Node *root =NULL;
+    
     for(int i=0;i<10;i++)
     root =BST(root,arr[i]);
+
+    inorder(root);
     return 0;
 }
