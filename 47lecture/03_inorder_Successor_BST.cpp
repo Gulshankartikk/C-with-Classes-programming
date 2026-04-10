@@ -70,3 +70,57 @@ int main()
         cout << "In-order Successor does not exist." << endl;
     }
 }
+
+//Morris Traversal
+
+/*class Solution {
+  public:
+    
+    int inOrderSuccessor(Node *root, Node *x) {
+       bool flag = 0;
+
+       while(root)
+       {
+           // left doesn't exist
+           if(root->left == NULL)
+           {
+               if(flag == 1)
+                   return root->data;   // ✅ fixed
+
+               if(root == x)
+                   flag = 1;
+
+               root = root->right;
+           }
+           else
+           {
+               Node *curr = root->left;
+
+               // rightmost node
+               while(curr->right && curr->right != root)
+                   curr = curr->right;
+
+               // form the link
+               if(curr->right == NULL)
+               {
+                   curr->right = root;
+                   root = root->left;
+               }
+               else
+               {
+                   curr->right = NULL;
+
+                   if(flag == 1)
+                       return root->data;   // ✅ fixed
+
+                   if(root == x)
+                       flag = 1;   // ✅ fixed typo
+
+                   root = root->right;
+               }
+           }
+       }
+
+       return -1;   // ✅ added
+    }
+};*/
