@@ -31,7 +31,7 @@ int main() {
     Solution obj;
 
     int result = obj.minCost(arr);
-    cout << "Minimum Cost = " << result << endl;
+    cout << "  = " << result << endl;
 
     return 0;
 }
