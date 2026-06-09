@@ -5,7 +5,7 @@ using namespace std;
 
 bool sortbysec(pair<int,int> a,pair<int,int> b)
 {
-   return a.second< b.second;
+   return a.second > b.second ||(a.second == b.second && a.first<b.first);
 }
 int main()
 {
@@ -20,7 +20,7 @@ int main()
 //accending order
 //   sort(v.begin(),v.end());
   //decending order
-  sort(v.rbegin(),v.rend());
+  sort(v.rbegin(),v.rend(),sortbysec); 
 
   for(int i=0;i<5;i++)
   cout<<v[i].first<<" "<<v[i].second<<endl;
