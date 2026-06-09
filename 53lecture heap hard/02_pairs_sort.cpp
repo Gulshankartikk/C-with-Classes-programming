@@ -3,6 +3,10 @@
 #include<algorithm>
 using namespace std;
 
+bool sortbysec(pair<int,int> a,pair<int,int> b)
+{
+   return a.second< b.second;
+}
 int main()
 {
    //create pair
