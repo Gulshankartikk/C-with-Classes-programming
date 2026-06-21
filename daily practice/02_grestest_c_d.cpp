@@ -1,13 +1,10 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>  // for count(), min()
-#include <climits>    // for INT_MAX
-
+#include <algorithm>
 using namespace std;
 
-// ✅ Custom gcd function (works for all C++ versions)
-int myGCD(int a, int b) {
-    while (b != 0) {
+int gcd(int a, int b) {
+    while (b) {
         int temp = b;
         b = a % b;
         a = temp;
@@ -18,40 +15,41 @@ int myGCD(int a, int b) {
 int minOperations(vector<int>& nums) {
     int n = nums.size();
 
-    // Step 1: Check overall GCD
-    int overall_gcd = nums[0];
+    int overallGcd = nums[0];
     for (int i = 1; i < n; i++) {
-        overall_gcd = myGCD(overall_gcd, nums[i]);
+        overallGcd = gcd(overallGcd, nums[i]);
     }
-    if (overall_gcd != 1) return -1; // impossible case
 
-    // Step 2: If any element is already 1
+    if (overallGcd != 1)
+        return -1;
+
     int ones = count(nums.begin(), nums.end(), 1);
-    if (ones > 0) return n - ones;
 
-    // Step 3: Find shortest subarray with gcd == 1
-    int min_len = INT_MAX;
+    if (ones > 0)
+        return n - ones;
+
+    int minLen = n + 1;
+
     for (int i = 0; i < n; i++) {
-        int g = nums[i];
+        int g = 0;
+
         for (int j = i; j < n; j++) {
-            g = myGCD(g, nums[j]);
+            g = gcd(g, nums[j]);
+
             if (g == 1) {
-                min_len = min(min_len, j - i + 1);
-                break; // found shortest for this i
+                minLen = min(minLen, j - i + 1);
+                break;
             }
         }
     }
 
-    // Step 4: (length to make 1 - 1) + (n - 1)
-    return (min_len - 1) + (n - 1);
+    return (minLen - 1) + (n - 1);
 }
 
 int main() {
-    vector<int> nums1 = {2, 6, 3, 4};
-    vector<int> nums2 = {2, 10, 6, 14};
+    vector<int> nums = {2, 6, 3, 4};
 
-    cout << "Example 1: " << minOperations(nums1) << endl;  // Output: 4
-    cout << "Example 2: " << minOperations(nums2) << endl;  // Output: -1
+    cout << minOperations(nums);
 
     return 0;
 }
