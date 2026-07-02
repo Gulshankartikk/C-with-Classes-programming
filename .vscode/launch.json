@@ -2,16 +2,17 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "C/C++ Runner: Debug Session",
+      "name": "g++ - Build and Debug",
       "type": "cppdbg",
       "request": "launch",
+      "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
       "args": [],
       "stopAtEntry": false,
+      "cwd": "${fileDirname}",
       "externalConsole": true,
-      "cwd": "c:/Users/kg872/OneDrive/Desktop/C++ DSA",
-      "program": "c:/Users/kg872/OneDrive/Desktop/C++ DSA/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "C:/mingw64/bin/gdb.exe",
+      "preLaunchTask": "build cpp",
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",
