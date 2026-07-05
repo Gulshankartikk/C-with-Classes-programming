@@ -13,7 +13,7 @@ int minimumStep(int n) {
     count_edge += n;
     count_edge--;
 
-    return count_edge;
+    return count_edge; 
 }
 
 int main() {
