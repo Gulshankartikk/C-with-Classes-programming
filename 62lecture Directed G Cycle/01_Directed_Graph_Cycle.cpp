@@ -8,12 +8,14 @@ bool DFS(vector<vector<int>> &adj, vector<bool> &visited,
     visited[node] = true;
     path[node] = true;
 
-    for (int next : adj[node]) {
-        if (!visited[next]) {
-            if (DFS(adj, visited, path, next))
+    for (int i = 0; i < adj[node].size(); i++) {
+        int neigh = adj[node][i];
+
+        if (!visited[neigh]) {
+            if (DFS(adj, visited, path, neigh))
                 return true;
         }
-        else if (path[next]) {
+        else if (path[neigh]) {
             return true;
         }
     }
@@ -22,14 +24,7 @@ bool DFS(vector<vector<int>> &adj, vector<bool> &visited,
     return false;
 }
 
-bool isCyclic(int V, vector<vector<int>> &edges) {
-
-    // Build adjacency list
-    vector<vector<int>> adj(V);
-
-    for (auto &e : edges) {
-        adj[e[0]].push_back(e[1]);
-    }
+bool isCyclic(int V, vector<vector<int>> &adj) {
 
     vector<bool> visited(V, false);
     vector<bool> path(V, false);
@@ -48,16 +43,18 @@ int main() {
     int V, E;
     cin >> V >> E;
 
-    vector<vector<int>> edges(E, vector<int>(2));
+    vector<vector<int>> adj(V);
 
     for (int i = 0; i < E; i++) {
-        cin >> edges[i][0] >> edges[i][1];
+        int u, v;
+        cin >> u >> v;
+        adj[u].push_back(v);   // Directed graph
     }
 
-    if (isCyclic(V, edges))
-        cout << "Cycle Detected\n";
+    if (isCyclic(V, adj))
+        cout << "Cycle Detected";
     else
-        cout << "No Cycle\n";
+        cout << "No Cycle";
 
     return 0;
 }
