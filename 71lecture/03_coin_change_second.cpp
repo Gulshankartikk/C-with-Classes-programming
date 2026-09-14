@@ -42,3 +42,37 @@ int main() {
 
     return 0;
 }
+
+/*class Solution {
+public:
+    int find(int index, int amount, vector<int>& coins,
+             int n, vector<vector<int>>& dp) {
+
+        // Base case
+        if (amount == 0)
+            return 1;
+
+        if (index == 0)
+            return 0;
+
+        if (dp[index][amount] != -1)
+            return dp[index][amount];
+
+        if (coins[index - 1] > amount)
+            return dp[index][amount] = find(index - 1, amount, coins, n, dp);
+
+        else
+            return dp[index][amount] =
+                find(index, amount - coins[index - 1], coins, n, dp)
+                + find(index - 1, amount, coins, n, dp);
+    }
+
+    int change(int amount, vector<int>& coins) {
+
+        int n = coins.size();
+
+        vector<vector<int>> dp(n + 1, vector<int>(amount + 1, -1));
+
+        return find(n, amount, coins, n, dp);
+    }
+};*/
