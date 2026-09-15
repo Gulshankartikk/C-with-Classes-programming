@@ -2,7 +2,8 @@
 using namespace std;
 
 int find(int n, int m, string &s1, string &s2,
-         vector<vector<int>> &dp) {
+         vector<vector<int>> &dp)
+{
 
     if (n == 0 || m == 0)
         return 0;
@@ -12,15 +13,16 @@ int find(int n, int m, string &s1, string &s2,
 
     if (s1[n - 1] == s2[m - 1])
         return dp[n][m] =
-            1 + find(n - 1, m - 1, s1, s2, dp);
+                   1 + find(n - 1, m - 1, s1, s2, dp);
 
     else
         return dp[n][m] =
-            max(find(n - 1, m, s1, s2, dp),
-                find(n, m - 1, s1, s2, dp));
+                   max(find(n - 1, m, s1, s2, dp),
+                       find(n, m - 1, s1, s2, dp));
 }
 
-int lcs(string &s1, string &s2) {
+int lcs(string &s1, string &s2)
+{
 
     int n = s1.size();
     int m = s2.size();
@@ -31,7 +33,8 @@ int lcs(string &s1, string &s2) {
     return find(n, m, s1, s2, dp);
 }
 
-int main() {
+int main()
+{
 
     string s1, s2;
 
