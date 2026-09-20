@@ -35,3 +35,25 @@ int main() {
 
     return 0;
 }
+
+/*class Solution {
+public:
+    
+
+    int maxProfit(vector<int>& prices) {
+        int n = prices.size();
+        vector<vector<int>> dp(3,vector<int>(n+1,0));
+
+        int total;
+        for(int i=1;i<=2;i++)
+        {
+            total =-prices[0];
+            for(int j=2;j<=n;j++)
+            {
+                dp[i][j]=max(dp[i][j-1],prices[j-1]+total);
+                total =max(total, -prices[j-1]+dp[i-1][j]);
+            }
+        };
+        return dp[2][n];
+    }
+};*/
