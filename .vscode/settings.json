@@ -59,5 +59,6 @@
   "files.associations": {
     "iostream": "cpp",
     "ostream": "cpp"
-  }
+  },
+  "editor.inlineSuggest.enabled": false
 }
